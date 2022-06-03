@@ -2,11 +2,11 @@
 
 namespace backend\controllers;
 
-use backend\models\Product;
-use backend\models\ProductCard;
-use backend\models\ProductForm;
-use backend\models\ProductImage;
-use backend\models\ProductSearch;
+use common\models\Product;
+use common\models\ProductCard;
+use common\models\ProductForm;
+use common\models\ProductImage;
+use common\models\ProductSearch;
 use backend\models\UploadedImageForm;
 use yii\base\Exception;
 use yii\db\Transaction;
@@ -79,12 +79,10 @@ class ProductController extends BaseController
         $productImage = new ProductImage();
 
         if ($this->request->isPost) {
-
-            if ($product->validate() && $productCard->validate()) {
+            if ($product->load($this->request->post(), 'Product') && $product->validate()) {
                 $this->writeProductData($product, $productCard, $productImage);
-
-                return $this->redirect(['view', 'id' => $product->id]);
             }
+            return $this->redirect(['view', 'id' => $product->id]);
         } else {
             $product->loadDefaultValues();
         }

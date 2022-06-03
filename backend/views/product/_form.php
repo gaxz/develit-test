@@ -4,9 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $product backend\models\Product */
-/* @var $productCard backend\models\ProductCard */
-/* @var $productImage backend\models\ProductImage */
+/* @var $product common\models\Product */
+/* @var $productCard common\models\ProductCard */
+/* @var $productImage common\models\ProductImage */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
